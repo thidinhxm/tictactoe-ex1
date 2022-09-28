@@ -10,6 +10,7 @@ const Game = () => {
 	const [ascending, setAscending] = useState(true);
 	const handleClick = (i) => {
 		const newHistory = history.slice(0, stepNumber + 1);
+		const newHistoryPoint = historyPoint.slice(0, stepNumber + 1);
 		const current = newHistory[newHistory.length - 1];
 		const newSquares = [...current.squares];
 		const edgeLength = parseInt(Math.sqrt(newSquares.length));
@@ -20,7 +21,7 @@ const Game = () => {
 		setHistory([...newHistory, {squares: newSquares}]);
 		setStepNumber(newHistory.length);
 		setXIsNext(!xIsNext);
-		setHistoryPoint([...historyPoint, [i % edgeLength, Math.floor(i / edgeLength)]]);
+		setHistoryPoint([...newHistoryPoint, [i % edgeLength, Math.floor(i / edgeLength)]]);
 	}
 
 	const sortHandleClick = () => {
