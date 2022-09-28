@@ -12,6 +12,7 @@ const Game = () => {
 		const newHistory = history.slice(0, stepNumber + 1);
 		const current = newHistory[newHistory.length - 1];
 		const newSquares = [...current.squares];
+		const edgeLength = parseInt(Math.sqrt(newSquares.length));
 		if (calculateWinner(newSquares) || newSquares[i]) {
 			return;
     }
@@ -19,7 +20,7 @@ const Game = () => {
 		setHistory([...newHistory, {squares: newSquares}]);
 		setStepNumber(newHistory.length);
 		setXIsNext(!xIsNext);
-		setHistoryPoint([...historyPoint, [i % 10, Math.floor(i / 10)]]);
+		setHistoryPoint([...historyPoint, [i % edgeLength, Math.floor(i / edgeLength)]]);
 	}
 
 	const sortHandleClick = () => {
